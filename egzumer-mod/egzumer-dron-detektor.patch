@@ -1,0 +1,98 @@
+diff --git a/Makefile b/Makefile
+index c2202ce..0dade0d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,8 @@ ENABLE_VOX                    ?= 1
+ ENABLE_ALARM                  ?= 0
+ ENABLE_TX1750                 ?= 0
+ ENABLE_PWRON_PASSWORD         ?= 0
+-ENABLE_DTMF_CALLING           ?= 1
++# disabled to make room for ENABLE_DRONE_DETECT (flash is full otherwise)
++ENABLE_DTMF_CALLING           ?= 0
+ ENABLE_FLASHLIGHT             ?= 1
+ 
+ # ---- CUSTOM MODS ----
+@@ -40,6 +41,7 @@ ENABLE_REDUCE_LOW_MID_TX_POWER?= 0
+ ENABLE_BYP_RAW_DEMODULATORS   ?= 0
+ ENABLE_BLMIN_TMP_OFF          ?= 0
+ ENABLE_SCAN_RANGES            ?= 1
++ENABLE_DRONE_DETECT           ?= 1
+ 
+ # ---- DEBUGGING ----
+ ENABLE_AM_FIX_SHOW_DATA       ?= 0
+@@ -128,6 +130,9 @@ OBJS += app/menu.o
+ ifeq ($(ENABLE_SPECTRUM), 1)
+ OBJS += app/spectrum.o
+ endif
++ifeq ($(ENABLE_DRONE_DETECT), 1)
++OBJS += app/dronedet.o
++endif
+ OBJS += app/scanner.o
+ ifeq ($(ENABLE_UART),1)
+ 	OBJS += app/uart.o
+@@ -254,6 +259,9 @@ CFLAGS += -DAUTHOR_STRING=\"$(AUTHOR_STRING)\" -DVERSION_STRING=\"$(VERSION_STRI
+ ifeq ($(ENABLE_SPECTRUM),1)
+ CFLAGS += -DENABLE_SPECTRUM
+ endif
++ifeq ($(ENABLE_DRONE_DETECT),1)
++CFLAGS += -DENABLE_DRONE_DETECT
++endif
+ ifeq ($(ENABLE_SWD),1)
+ 	CFLAGS += -DENABLE_SWD
+ endif
+diff --git a/app/action.c b/app/action.c
+index 793d315..58145fa 100644
+--- a/app/action.c
++++ b/app/action.c
+@@ -57,6 +57,10 @@ inline static void ACTION_1750() { ACTION_AlarmOr1750(true); };
+ #include "app/spectrum.h"
+ #endif
+ 
++#ifdef ENABLE_DRONE_DETECT
++#include "app/dronedet.h"
++#endif
++
+ inline static void ACTION_ScanRestart() { ACTION_Scan(true); };
+ 
+ void (*action_opt_table[])(void) = {
+@@ -110,6 +114,12 @@ void (*action_opt_table[])(void) = {
+ #else
+ 	[ACTION_OPT_SPECTRUM] = &FUNCTION_NOP,
+ #endif
++
++#ifdef ENABLE_DRONE_DETECT
++	[ACTION_OPT_DRONE_DETECT] = &APP_RunDroneDetector,
++#else
++	[ACTION_OPT_DRONE_DETECT] = &FUNCTION_NOP,
++#endif
+ };
+ 
+ static_assert(ARRAY_SIZE(action_opt_table) == ACTION_OPT_LEN);
+diff --git a/settings.h b/settings.h
+index 16b9ac0..ed8bd4f 100644
+--- a/settings.h
++++ b/settings.h
+@@ -91,6 +91,7 @@ enum ACTION_OPT_t {
+ 	ACTION_OPT_SWITCH_DEMODUL,
+ 	ACTION_OPT_BLMIN_TMP_OFF, //BackLight Minimum Temporay OFF
+ 	ACTION_OPT_SPECTRUM,
++	ACTION_OPT_DRONE_DETECT,
+ 	ACTION_OPT_LEN
+ };
+ 
+diff --git a/ui/menu.c b/ui/menu.c
+index f5855e5..cc66730 100644
+--- a/ui/menu.c
++++ b/ui/menu.c
+@@ -363,7 +363,10 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
+ 	{"BLMIN\nTMP OFF",  ACTION_OPT_BLMIN_TMP_OFF}, 		//BackLight Minimum Temporay OFF
+ #endif
+ #ifdef ENABLE_SPECTRUM
+-	{"SPECTRUM",         ACTION_OPT_SPECTRUM}
++	{"SPECTRUM",         ACTION_OPT_SPECTRUM},
++#endif
++#ifdef ENABLE_DRONE_DETECT
++	{"DRON\nDETEKTOR",   ACTION_OPT_DRONE_DETECT},
+ #endif
+ };
+ 
