@@ -1,8 +1,8 @@
-# RID-K5: dedykowany firmware skanera łączy dronów dla Quansheng UV-K5.
+# DRON-K5: dedykowany firmware skanera łączy dronów dla Quansheng UV-K5.
 # Sterowniki sprzętu z egzumera (Apache 2.0), aplikacja własna. Radio nie nadaje.
 TARGET = scanner
-VERSION_STRING ?= RIDK5
-AUTHOR_STRING ?= RIDK5
+VERSION_STRING ?= DRONK5
+AUTHOR_STRING ?= DRONK5
 
 OBJS = start.o init.o external/printf/printf.o \
 	driver/adc.o driver/bk4819.o driver/crc.o driver/eeprom.o driver/gpio.o \

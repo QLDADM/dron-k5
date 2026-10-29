@@ -1,4 +1,4 @@
-/* RID-K5: dedykowany firmware skanera łączy sterowania dronów dla Quansheng UV-K5.
+/* DRON-K5: dedykowany firmware skanera łączy sterowania dronów dla Quansheng UV-K5.
  *
  * Wykrywa łącza ELRS / Crossfire / LRS na 433, 868 i 915 MHz oraz analogowe wideo FPV
  * na 1,2 GHz (po wzorcu RSSI - bez dekodowania), pokazuje alarmy, wodospad kanałów,

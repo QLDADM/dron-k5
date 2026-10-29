@@ -1,4 +1,4 @@
-/* RID-K5: ustawienia i dziennik alarmów (opis w store.h). */
+/* DRON-K5: ustawienia i dziennik alarmów (opis w store.h). */
 #include <string.h>
 
 #include "app/store.h"

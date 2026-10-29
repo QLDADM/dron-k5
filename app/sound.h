@@ -1,4 +1,4 @@
-/* RID-K5: dźwięki z głośnika radia (generator tonu BK4819 - bez nadawania). */
+/* DRON-K5: dźwięki z głośnika radia (generator tonu BK4819 - bez nadawania). */
 #ifndef APP_SOUND_H
 #define APP_SOUND_H
 

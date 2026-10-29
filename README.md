@@ -1,4 +1,4 @@
-# RID-K5: skaner łączy dronów na radiu Quansheng UV-K5
+# DRON-K5: skaner łączy dronów na radiu Quansheng UV-K5
 
 Firmware zamienia popularne radio **Quansheng UV-K5** w **skaner sygnałów sterowania dronami**.
 Wykrywa łącza **ELRS, Crossfire i inne LRS** na **433, 868 i 915 MHz** oraz analogowe **wideo FPV na 1,2 GHz**.
@@ -24,7 +24,7 @@ Drony DJI na Wi-Fi 2,4 / 5,8 GHz są poza zasięgiem tego radia. Do nich służy
 | **Quansheng UV-K5, UV-K5(8), UV-K6, UV-5R Plus** z procesorem **DP32G030** (większość sprzedawanych w latach 2023–2024) | ✅ tak |
 | Nowsze **UV-K5 V3**, **UV-K1** i inne z procesorem **PY32F071** | ❌ nie, mają inny procesor |
 
-Jeśli na radiu działał już firmware **egzumer** albo inny alternatywny firmware UV-K5, RID-K5 też zadziała.
+Jeśli na radiu działał już firmware **egzumer** albo inny alternatywny firmware UV-K5, DRON-K5 też zadziała.
 
 ---
 
@@ -39,8 +39,8 @@ Jeśli na radiu działał już firmware **egzumer** albo inny alternatywny firmw
 
 ### Krok 1. Pobierz plik firmware
 
-1. Wejdź na https://github.com/QLDADM/rid-k5/releases.
-2. Przy najnowszej wersji w sekcji **Assets** kliknij **`rid-k5-skaner.packed.bin`**.
+1. Wejdź na https://github.com/QLDADM/dron-k5/releases.
+2. Przy najnowszej wersji w sekcji **Assets** kliknij **`dron-k5-skaner.packed.bin`**.
 3. Plik trafi do folderu **Pobrane**. Nie otwieraj go, nie rozpakowuj i nie zmieniaj mu nazwy.
 
 ### Krok 2. Podłącz kabel
@@ -63,7 +63,7 @@ Jeśli radio uruchomiło się normalnie (pokazuje częstotliwość), wyłącz je
 ### Krok 4. Wgraj firmware przez przeglądarkę
 
 1. W Chrome albo Edge wejdź na **https://egzumer.github.io/uvtools/** i wybierz **Firmware flasher**.
-2. Kliknij przycisk wyboru pliku i wskaż pobrany **`rid-k5-skaner.packed.bin`**.
+2. Kliknij przycisk wyboru pliku i wskaż pobrany **`dron-k5-skaner.packed.bin`**.
 3. Kliknij przycisk wgrywania (**Flash**).
 4. Przeglądarka pokaże okienko z portami. Wybierz port kabla (np. „USB-SERIAL CH340 (COM5)”) i kliknij **Połącz**.
 5. Poczekaj, aż pasek dojdzie do 100% (kilkanaście sekund). **Nie odłączaj kabla w trakcie.**
@@ -77,7 +77,7 @@ Zrób dokładnie to samo (kroki 2–4), ale wgraj inny plik:
 - **egzumer** (rozbudowany firmware radiowy): https://github.com/egzumer/uv-k5-firmware-custom/releases,
 - albo **oryginalny firmware Quansheng** ze strony producenta.
 
-Kanały i kalibracja zapisane w radiu **zostają nietknięte**. RID-K5 zapisuje swoje ustawienia tylko w obszarze pamięci
+Kanały i kalibracja zapisane w radiu **zostają nietknięte**. DRON-K5 zapisuje swoje ustawienia tylko w obszarze pamięci
 (0x1D00–0x1DFF), którego zwykły firmware nie używa. Po powrocie radio działa jak przedtem.
 
 Dla bezpieczeństwa możesz przed pierwszym wgraniem zrobić kopię pamięci radia: na https://egzumer.github.io/uvtools/

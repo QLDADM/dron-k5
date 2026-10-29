@@ -1,4 +1,4 @@
-/* RID-K5: ustawienia i dziennik alarmów w EEPROM radia.
+/* DRON-K5: ustawienia i dziennik alarmów w EEPROM radia.
  * Obszar 0x1D00-0x1DFF: nieużywany przez egzumer i oryginalne oprogramowanie, a reset
  * ustawień egzumera go pomija - po powrocie do egzumera kanały i kalibracja są nietknięte.
  *   0x1D00  ustawienia (8 B)

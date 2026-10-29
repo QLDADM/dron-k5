@@ -1,4 +1,4 @@
-/* RID-K5: ekrany i klawisze (opis w screens.h). Ekran 128x64: pasek stanu 8 px + 7 linii po 8 px. */
+/* DRON-K5: ekrany i klawisze (opis w screens.h). Ekran 128x64: pasek stanu 8 px + 7 linii po 8 px. */
 #include <string.h>
 
 #include "app/scan.h"
@@ -270,7 +270,7 @@ static void RenderMenu(void)
 
 void SCREENS_Render(void)
 {
-	static const char *TITLES[] = {"RID-K5 SKANER", "RID-K5 PASMO", "SZUKANIE", "DZIENNIK", "USTAWIENIA"};
+	static const char *TITLES[] = {"DRON-K5 SKANER", "DRON-K5 PASMO", "SZUKANIE", "DZIENNIK", "USTAWIENIA"};
 	UI_DisplayClear();
 	switch (screen) {
 	case SCR_BAND: RenderBand(); break;

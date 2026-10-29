@@ -1,4 +1,4 @@
-/* RID-K5: ekrany i klawisze.
+/* DRON-K5: ekrany i klawisze.
  *   0          wszystkie pasma (ekran główny)
  *   1..4       jedno pasmo: 433 / 868 / 915 / 1,2 GHz z wodospadem kanałów
  *   5          tryb szukania (namierzanie aparatury/pilota po sile sygnału), ponownie - koniec

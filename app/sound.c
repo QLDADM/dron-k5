@@ -1,4 +1,4 @@
-/* RID-K5: dźwięki. Ton powstaje w torze audio BK4819 (jak sygnały klawiszy w egzumerze);
+/* DRON-K5: dźwięki. Ton powstaje w torze audio BK4819 (jak sygnały klawiszy w egzumerze);
  * wzmacniacz mocy nadajnika nie jest włączany. Po tonie odbiornik wraca do skanowania. */
 #include "app/scan.h"
 #include "app/sound.h"

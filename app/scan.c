@@ -1,4 +1,4 @@
-/* RID-K5: silnik skanowania (opis w scan.h). Algorytm jak w trybie DRON DETEKTOR dla egzumera. */
+/* DRON-K5: silnik skanowania (opis w scan.h). Algorytm jak w trybie DRON DETEKTOR dla egzumera. */
 #include <string.h>
 
 #include "app/scan.h"

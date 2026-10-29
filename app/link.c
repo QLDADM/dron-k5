@@ -1,4 +1,4 @@
-/* RID-K5: łącze z komputerem (opis w link.h). */
+/* DRON-K5: łącze z komputerem (opis w link.h). */
 #include <string.h>
 
 #include "app/link.h"
@@ -52,7 +52,7 @@ static void HandleCommand(void)
 	} else if (!strcmp(cmd, "LOG")) {
 		DumpLog();
 	} else if (!strcmp(cmd, "ID")) {
-		SendLine("DI,RID-K5," VERSION_STRING "\r\n");
+		SendLine("DI,DRON-K5," VERSION_STRING "\r\n");
 	}
 }
 

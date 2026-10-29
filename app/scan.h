@@ -1,4 +1,4 @@
-/* RID-K5: silnik skanowania - wykrywanie łączy sterowania dronów po wzorcu RSSI.
+/* DRON-K5: silnik skanowania - wykrywanie łączy sterowania dronów po wzorcu RSSI.
  *
  * Każde pasmo jest przemiatane kanał po kanale; RSSI kanału porównujemy z jego własnym,
  * uczonym poziomem szumu. Łącza FHSS (ELRS, Crossfire, LRS) zapalają w oknie wiele różnych
