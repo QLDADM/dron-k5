@@ -1,0 +1,5 @@
+*.o
+*.d
+scanner
+scanner.bin
+scanner.packed.bin
