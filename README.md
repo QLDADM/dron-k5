@@ -24,8 +24,23 @@ Kanały i kalibracja zapisane w radiu **zostają nietknięte** przy każdej zmia
 
 Wykrywanie opiera się na sile sygnału w pasmach używanych przez drony. To wskazówka, a nie pewna identyfikacja,
 bo inne urządzenia nadające w tych pasmach (np. piloty bram, czujniki) też mogą dać alarm.
-Drony DJI na Wi-Fi 2,4 / 5,8 GHz są poza zasięgiem tego radia. Do nich służy odbiornik Remote ID, np.
-[RID Heltec](https://github.com/QLDADM/rid-heltec).
+Drony DJI na Wi-Fi 2,4 / 5,8 GHz są poza zasięgiem tego radia. Do nich służą odbiorniki Remote ID
+z projektu [Dron Detector](https://github.com/QLDADM/dron-detector).
+
+## Projekt Dron Detector
+
+DRON-K5 jest częścią projektu **Dron Detector** - pasywnego systemu wykrywania dronów. Radio wykrywa drony bez Remote ID po łączach sterowania i wideo. Wszystkie części tylko **odbierają** sygnały - nic nie nadają w stronę drona.
+
+| Część | Rola | Gdzie |
+|---|---|---|
+| **Strona podglądu** (telefon, tablet, komputer) | lista dronów, mapa, radar, widok 3D, wysokość nad terenem (AGL), pasma Wi-Fi | [dron-detector](https://github.com/QLDADM/dron-detector), **https://qldadm.github.io/dron-detector/** |
+| **Heltec V3** | samodzielny wykrywacz Remote ID, alarmy LoRa do aplikacji Meshtastic | [dron-detector/firmware](https://github.com/QLDADM/dron-detector/tree/main/firmware) |
+| **CYD** (ESP32-2432S028) | centrala systemu w walizce: ekran dotykowy, karta SD, czujniki ESP32-C5, Bluetooth do tabletu | [rid-cyd](https://github.com/QLDADM/rid-cyd) |
+| **ESP32-C5** (2 szt., anteny zewnętrzne) | czujniki Remote ID na Wi-Fi 2,4 GHz i 5 GHz, podłączone przewodem do CYD | firmware w przygotowaniu |
+| **M5StickC Plus2** | osobisty alarm w kieszeni, tryb szukania drona po sile sygnału | [rid-m5](https://github.com/QLDADM/rid-m5) |
+| **Quansheng UV-K5** | wykrywanie łączy sterowania ELRS / Crossfire (433 / 868 / 915 MHz) i wideo FPV 1,2 GHz | [dron-k5](https://github.com/QLDADM/dron-k5) |
+
+Firmware Heltec, CYD i M5 ma wspólny numer wersji (1.6), a strona podglądu własny (1.0).
 
 ---
 
